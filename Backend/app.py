@@ -7,7 +7,7 @@ CORS(app)
 
 client = genai.Client(api_key="AIzaSyCJdBZtmP77kewd4TXFIXGAaYdk7Jemsco")
 
-@app.route("/chat", methods=["POST"])
+@app.route("/", methods=["POST"])
 def chat():
     user_message = request.json.get("message")
 
