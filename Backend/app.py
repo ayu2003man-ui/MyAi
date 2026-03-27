@@ -13,17 +13,22 @@ client = genai.Client(api_key=os.getenv("API_KEY"))
 def home():
     return "Backend is running 🚀"
 
-# ✅ Chat route (for frontend)
 @app.route("/chat", methods=["POST"])
 def chat():
-    user_message = request.json.get("message")
+    data = request.get_json()
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=user_message
-    )
+    if not data or "message" not in data:
+        return jsonify({"error": "Invalid request"}), 400
 
-    return jsonify({"reply": response.text})
+    user_message = data["message"]
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=user_message
+        )
+
+        return jsonify({"reply": response.text})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

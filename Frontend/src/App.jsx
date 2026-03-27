@@ -33,7 +33,13 @@ function App() {
       body: JSON.stringify({ message }),
     });
 
-    const data = await res.json();
+    if (!res.ok) {
+  const text = await res.text();
+  console.error("Server error:", text);
+  throw new Error("Server error");
+}
+
+const data = await res.json();
 
     let botText = "";
 
