@@ -25,7 +25,7 @@ function App() {
       return [...prev, { sender: "AI", text: "..." }];
     });
 
-    const res = await fetch("https://your-render-url.onrender.com/chat", {
+    const res = await fetch("https://myai-izkb.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
