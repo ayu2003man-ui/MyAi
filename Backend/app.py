@@ -10,6 +10,7 @@ CORS(app)
 API_KEYS = [
     {"key": os.getenv("GEMINI_KEY_1"), "provider": "gemini"},
     {"key": os.getenv("GEMINI_KEY_2"), "provider": "gemini"},
+    {"key": os.getenv("GROQ_KEY_1"), "provider": "groq"},
 ]
 
 current_key_index = 0
