@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, lazy, Suspense } from "react";
-import Spline from "@splinetool/react-spline";
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
 const styles = `
