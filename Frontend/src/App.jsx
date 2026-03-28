@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, lazy, Suspense } from "react";
-const Spline = lazy(() => import("@splinetool/react-spline"));
+import { useState, useEffect, useRef } from "react";
+import SplineScene from "./SplineScene";
 
 const styles = `
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
@@ -131,15 +131,13 @@ export default function App() {
           </div>
         )}
 
-        {/* Spline 3D Button */}
+        {/* 3D Button */}
 <div
   className="robot-float"
   onClick={() => setIsOpen(!isOpen)}
-  style={{ width: 100, height: 100, borderRadius: "50%", overflow: "hidden" }}
+  style={{ width: 100, height: 100, cursor: "pointer" }}
 >
-  <Suspense fallback={<div style={{ width: 100, height: 100, borderRadius: "50%", background: "#7F77DD", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28 }}>🤖</div>}>
-    <Spline scene="https://my.spline.design/particles-IegyFjDn3xchzpcGwZi6O8Ae/" />
-  </Suspense>
+  <SplineScene />
 </div>
 
       </div>
